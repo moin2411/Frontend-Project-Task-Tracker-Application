@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+  <h2>Dashboard</h2>
+
+  <div class="stats">
+    <div class="stat-box">
+      <h3>Total Tasks</h3>
+      <p>{{ totalTasks }}</p>
+    </div>
+    <div class="stat-box in-progress">
+      <h3>In Progress</h3>
+      <p>{{ inProgressTasks }}</p>
+    </div>
+    <div class="stat-box completed">
+      <h3>Completed</h3>
+      <p>{{ completedTasks }}</p>
+    </div>
+  </div>
+
+  <h3>Your Tasks</h3>
+  <table class="task-table">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Project</th>
+      </tr>
+      <tr *ngFor="let task of tasks">
+      <td>{{ task.name }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.priority }}</td>
+      <td>{{ task.dueDate }}</td>
+        <td>{{ task.status }}</td>
+      <td>{{ task.projectId }}</td>
+      </tr>
+  </table>
+
+  <div class="dashboard-buttons">
+    <button (click)="navigateToTasks()">Manage Tasks</button>
+    <button *ngIf="isAdmin()" (click)="navigateToProjects()">Manage Projects</button>
+    <button (click)="navigateToTaskTracker()">Task Tracker</button>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</div>

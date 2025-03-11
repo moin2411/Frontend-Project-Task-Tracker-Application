@@ -1,0 +1,63 @@
+<div class="task-form">
+  <h2>{{ isEditing ? 'Edit Task' : 'Create Task' }}</h2>
+
+  <label for="name">Task Name:</label>
+  <input type="text" id="name" [(ngModel)]="newTask.name" required>
+
+  <label for="description">Description:</label>
+  <textarea id="description" [(ngModel)]="newTask.description"></textarea>
+
+  <label for="status">Status:</label>
+  <select id="status" [(ngModel)]="newTask.status">
+    <option value="NOT_STARTED">Not Started</option>
+    <option value="IN_PROGRESS">In Progress</option>
+    <option value="COMPLETED">Completed</option>
+  </select>
+
+  <label for="priority">Priority:</label>
+  <select id="priority" [(ngModel)]="newTask.priority">
+    <option value="LOW">Low</option>
+    <option value="MEDIUM">Medium</option>
+    <option value="HIGH">High</option>
+  </select>
+
+  <label for="dueDate">Due Date:</label>
+  <input type="date" id="dueDate" [(ngModel)]="newTask.dueDate">
+
+  <label for="userId">User ID:</label>
+  <input type="number" id="userId" [(ngModel)]="newTask.userId" required>
+
+  <label for="projectId">Project ID:</label>
+  <input type="number" id="projectId" [(ngModel)]="newTask.projectId" required>
+
+  <label for="version">VERSION:</label>
+  <input type="number" id="version" [(ngModel)]="newTask.version" required>
+
+  <button *ngIf="!isEditing" (click)="createTask()">Create Task</button>
+  <button *ngIf="isEditing" (click)="updateTask()">Update Task</button>
+  <button *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+</div>
+
+<h2>Task List</h2>
+<table class="task-table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Due Date</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let task of tasks">
+    <td>{{ task.name }}</td>
+    <td>{{ task.description }}</td>
+    <td>{{ task.status }}</td>
+    <td>{{ task.priority }}</td>
+    <td>{{ task.dueDate }}</td>
+    <td>
+      <button (click)="editTask(task)">Edit</button>
+      <button *ngIf="isAdmin()" (click)="deleteTask(task.id)">Delete</button>
+      <!-- <button (click)="deleteTask(task.id)">Delete</button> -->
+    </td>
+  </tr>
+</table>

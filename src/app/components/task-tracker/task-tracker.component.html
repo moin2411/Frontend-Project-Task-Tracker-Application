@@ -1,0 +1,46 @@
+<div class="task-tracker-container">
+    <h2>Task Tracker</h2>
+  
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Description</th>
+          <th>Priority</th>
+          <th>Due Date</th>
+          <th>Status</th>
+          <th>Progress</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.dueDate }}</td>
+          <td>{{ task.status }}</td>
+          <td>
+            <div class="progress-bar">
+              <div class="progress" [ngClass]="{
+                'not-started': task.status === 'NOT_STARTED',
+                'in-progress': task.status === 'IN_PROGRESS',
+                'completed': task.status === 'COMPLETED'
+              }"></div>
+            </div>
+          </td>
+          <td>
+            <select [(ngModel)]="task.status" (change)="updateTaskStatus(task, task.status)">
+              <option value="NOT_STARTED">Not Started</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="COMPLETED">Completed</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="loadTasks()">Refresh</button>
+    <button (click)="goToDashboard()">Back to Dashboard</button>
+  </div>
+  

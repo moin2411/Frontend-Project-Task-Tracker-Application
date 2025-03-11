@@ -1,0 +1,74 @@
+  .dashboard-container {
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .stat-box {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%;
+    text-align: center;
+  }
+  
+  .stat-box.in-progress {
+    background: #ffcc00;
+    color: #333;
+  }
+  
+  .stat-box.completed {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .task-table th, .task-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .task-table th {
+    background: #007bff;
+    color: white;
+  }
+  
+  .dashboard-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  .logout-btn {
+    background: red;
+  }
+  
+  .logout-btn:hover {
+    background: darkred;
+  }
+  

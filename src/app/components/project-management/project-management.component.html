@@ -1,0 +1,84 @@
+<div class="container">
+  <h2>Project Management</h2>
+
+  <!-- Create New Project Form -->
+  <div class="form-container">
+    <h3>Create New Project</h3>
+    <form (submit)="createProject()">
+      <label for="name">Project Name:</label>
+      <input type="text" id="name" [(ngModel)]="newProject.name" name="name" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="newProject.description" name="description" required></textarea>
+
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" [(ngModel)]="newProject.startDate" name="startDate" required>
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" [(ngModel)]="newProject.endDate" name="endDate" required>
+
+      <label for="status">Status:</label>
+      <input type="text" id="status" id="status" [(ngModel)]="newProject.status" name="status" required>
+
+      <button type="submit">Create Project</button>
+    </form>
+  </div>
+
+  <!-- List of Projects -->
+  <div class="project-list">
+    <h3>Existing Projects</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.startDate }}</td>
+          <td>{{ project.endDate }}</td>
+          <td>{{ project.status }}</td>
+          <td>
+            <button (click)="editProject(project)">Edit</button>
+            <button (click)="deleteProject(project.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Edit Project Form -->
+  <div *ngIf="isEditing" class="edit-container">
+    <h3>Edit Project</h3>
+    <form (submit)="updateProject()">
+      <label for="editName">Project Name:</label>
+      <input type="text" id="editName" [(ngModel)]="selectedProject.name" name="editName" required>
+
+      <label for="editDescription">Description:</label>
+      <textarea id="editDescription" [(ngModel)]="selectedProject.description" name="editDescription" required></textarea>
+
+      <label for="editStartDate">Start Date:</label>
+      <input type="date" id="editStartDate" [(ngModel)]="selectedProject.startDate" name="editStartDate" required>
+
+      <label for="editEndDate">End Date:</label>
+      <input type="date" id="editEndDate" [(ngModel)]="selectedProject.endDate" name="editEndDate" required>
+
+      <label for="editStatus">Status:</label>
+      <select id="editStatus" [(ngModel)]="selectedProject.status" name="editStatus">
+        <option value="NOT_STARTED">Not Started</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="COMPLETED">Completed</option>
+      </select>
+
+      <button type="submit">Update Project</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+</div>
