@@ -10,33 +10,32 @@ import { jwtDecode } from "jwt-decode";
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api/auth'; // Update this if needed
+  private baseUrl = 'http://localhost:8080/api/auth'; 
 
-  constructor(private http: HttpClient) {} // Removed circular dependency
+  constructor(private http: HttpClient) {} 
 
-  // Register User
+  //Register User
   register(user: { username: string; password: string; role: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, user);
   }
 
-  // Login User
+  //Login User
   login(credentials: { username: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
       tap((response: any) => {
         if (response.token) {
           localStorage.setItem('token', response.token);
   
-          // ✅ Decode JWT correctly
+          //Decode JWT correctly
           const decodedToken: any = jwtDecode(response.token);
-          console.log("Decoded Token:", decodedToken); // Debugging step
-          localStorage.setItem('userRole', decodedToken.role); // ✅ Store role
+          localStorage.setItem('userRole', decodedToken.role); 
         }
       })
     );
   }
   
 
-  // Save Token to LocalStorage
+  //Save Token to LocalStorage
   saveToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -46,28 +45,28 @@ export class AuthService {
   saveRole(role: string): void {
     localStorage.setItem('userRole', role);
   }
-  // Get Token from LocalStorage
+  //Get Token from LocalStorage
   getToken(): string | null {
     return localStorage.getItem('token');
   }
   getUserRole(): string | null {
-    return localStorage.getItem('userRole'); // Ensure role is stored in localStorage
+    return localStorage.getItem('userRole'); 
   }
   
   getUserId(): number {
-    return Number(localStorage.getItem('userId')) || 0; // ✅ Ensures it always returns a valid number
+    return Number(localStorage.getItem('userId')) || 0; 
   }
-  // Logout User
+  //Logout User
   logout(): void {
     localStorage.removeItem('token');
   }
 
-  // Helper Function: Get Headers with Token
+  //Helper Function
   private getAuthHeaders(): HttpHeaders {
-    const token = this.getToken(); // Use `this.getToken()` directly
+    const token = this.getToken(); 
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: token ? `Bearer ${token}` : '' // Handle null token
+      Authorization: token ? `Bearer ${token}` : '' 
     });
   }
   

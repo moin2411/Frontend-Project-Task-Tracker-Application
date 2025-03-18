@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router'; // ✅ Import Router
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class TaskTrackerComponent implements OnInit {
   constructor(private taskService: TaskService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.userRole = this.authService.getUserRole(); // Fetch user role
+    this.userRole = this.authService.getUserRole(); 
     this.loadTasks();
 
   }
@@ -33,7 +33,7 @@ export class TaskTrackerComponent implements OnInit {
   }
 
   updateTaskStatus(task: any, newStatus: string): void {
-    task.status = newStatus; // Update status locally before sending to backend
+    task.status = newStatus; 
     this.taskService.updateTask(task.id, { ...task, status: newStatus }).subscribe({
       next: () => {
         alert(`Task updated to ${newStatus} successfully!`);
@@ -46,7 +46,7 @@ export class TaskTrackerComponent implements OnInit {
   }
 
   isAdmin(): boolean {
-    return this.userRole === 'ADMIN'; // ✅ Check if logged-in user is ADMIN
+    return this.userRole === 'ADMIN'; 
   }
   goToDashboard(): void {
     this.router.navigate(['/dashboard']);

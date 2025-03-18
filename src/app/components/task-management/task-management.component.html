@@ -2,10 +2,10 @@
   <h2>{{ isEditing ? 'Edit Task' : 'Create Task' }}</h2>
 
   <label for="name">Task Name:</label>
-  <input type="text" id="name" [(ngModel)]="newTask.name" required>
+  <input type="text" id="name" [(ngModel)]="newTask.name" placeholder="Enter task name" required>
 
   <label for="description">Description:</label>
-  <textarea id="description" [(ngModel)]="newTask.description"></textarea>
+  <textarea id="description" [(ngModel)]="newTask.description" placeholder="Describe the task"></textarea>
 
   <label for="status">Status:</label>
   <select id="status" [(ngModel)]="newTask.status">
@@ -57,7 +57,6 @@
     <td>
       <button (click)="editTask(task)">Edit</button>
       <button *ngIf="isAdmin()" (click)="deleteTask(task.id)">Delete</button>
-      <!-- <button (click)="deleteTask(task.id)">Delete</button> -->
     </td>
   </tr>
 </table>

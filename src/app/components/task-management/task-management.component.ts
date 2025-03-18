@@ -28,7 +28,6 @@ export class TaskManagementComponent implements OnInit {
     this.loadTasks();
   }
 
-  // Load tasks based on role
    loadTasks() {
       this.taskService.getAllTasks().subscribe({
         next: (response) => {
@@ -40,32 +39,6 @@ export class TaskManagementComponent implements OnInit {
       });
     }
 
-  // loadTasks() {
-  //   const userId = this.authService.getUserId(); // ✅ Ensure this method exists in AuthService
-  
-  //   if (this.authService.getUserRole() === 'ADMIN') {
-  //     this.taskService.getAllTasks().subscribe({
-  //       next: (tasks) => {
-  //         this.tasks = tasks; // ✅ Admin sees all tasks
-  //       },
-  //       error: (error) => {
-  //         console.error('Error loading tasks for Admin:', error);
-  //       }
-  //     });
-  //   } else {
-  //     this.taskService.getUserTasksById(userId).subscribe({
-  //       next: (tasks) => {
-  //         this.tasks = tasks; // ✅ User sees only their tasks
-  //       },
-  //       error: (error) => {
-  //         console.error('Error loading tasks for User:', error);
-  //       }
-  //     });
-  //   }
-  // }
-  
-
-  // Create a new task
   createTask() {
     this.taskService.createTask(this.newTask).subscribe({
       next: () => {
@@ -101,7 +74,6 @@ export class TaskManagementComponent implements OnInit {
     });
   }
 
-  // Delete a task (Only Admins can delete)
   deleteTask(taskId: number) {
     if (confirm('Are you sure you want to delete this task?')) {
       this.taskService.deleteTask(taskId).subscribe({
@@ -126,8 +98,7 @@ export class TaskManagementComponent implements OnInit {
   }
 
   isAdmin(): boolean {
-    return localStorage.getItem('userRole') === 'ADMIN';  // ✅ Check if role is ADMIN
+    return localStorage.getItem('userRole') === 'ADMIN';  
   }
-
   
 }

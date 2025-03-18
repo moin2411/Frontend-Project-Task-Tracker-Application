@@ -1,4 +1,3 @@
-/* Centering the registration form */
 .register-container {
   width: 400px;
   margin: 60px auto;
@@ -9,13 +8,11 @@
   text-align: center;
 }
 
-/* Title Styling */
 h2 {
   color: #333;
   margin-bottom: 20px;
 }
 
-/* Labels Styling */
 label {
   display: block;
   text-align: left;
@@ -24,7 +21,6 @@ label {
   color: #555;
 }
 
-/* Input Fields */
 input, select {
   width: 100%;
   padding: 10px;
@@ -41,7 +37,6 @@ input:focus, select:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Register Button */
 button {
   width: 100%;
   padding: 10px;
@@ -58,7 +53,6 @@ button:hover {
   background-color: #218838;
 }
 
-/* Login Link */
 .login-text {
   margin-top: 15px;
   font-size: 14px;

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskManagementComponent } from './components/task-management/task-management.component';
 import { ProjectManagementComponent } from './components/project-management/project-management.component';
-import { TaskTrackerComponent } from './components/task-tracker/task-tracker.component'; // ✅ Ensure TaskTrackerComponent is declared
+import { TaskTrackerComponent } from './components/task-tracker/task-tracker.component';  
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { TaskTrackerComponent } from './components/task-tracker/task-tracker.com
     DashboardComponent,
     TaskManagementComponent,
     ProjectManagementComponent,
-    TaskTrackerComponent // ✅ Ensure it's declared
+    TaskTrackerComponent 
 
   ],
   imports: [
@@ -30,7 +30,7 @@ import { TaskTrackerComponent } from './components/task-tracker/task-tracker.com
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule // ✅ Add CommonModule
+    CommonModule 
 
   ],
   providers: [],

@@ -1,15 +1,14 @@
 <div class="container">
   <h2>Project Management</h2>
 
-  <!-- Create New Project Form -->
   <div class="form-container">
     <h3>Create New Project</h3>
     <form (submit)="createProject()">
       <label for="name">Project Name:</label>
-      <input type="text" id="name" [(ngModel)]="newProject.name" name="name" required>
+      <input type="text" id="name" [(ngModel)]="newProject.name" name="name" placeholder="Enter project name" required>
 
       <label for="description">Description:</label>
-      <textarea id="description" [(ngModel)]="newProject.description" name="description" required></textarea>
+      <textarea id="description" [(ngModel)]="newProject.description" name="description" placeholder="Describe the project" required></textarea>
 
       <label for="startDate">Start Date:</label>
       <input type="date" id="startDate" [(ngModel)]="newProject.startDate" name="startDate" required>
@@ -24,7 +23,6 @@
     </form>
   </div>
 
-  <!-- List of Projects -->
   <div class="project-list">
     <h3>Existing Projects</h3>
     <table>
@@ -54,7 +52,6 @@
     </table>
   </div>
 
-  <!-- Edit Project Form -->
   <div *ngIf="isEditing" class="edit-container">
     <h3>Edit Project</h3>
     <form (submit)="updateProject()">

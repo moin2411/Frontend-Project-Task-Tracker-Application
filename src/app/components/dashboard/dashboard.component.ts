@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserTasks();
-    this.userRole = this.authService.getUserRole(); // ✅ Ensure this method exists in AuthService
+    this.userRole = this.authService.getUserRole(); 
   }
 
   loadUserTasks(): void {
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/task-tracker']);
   }
   isAdmin(): boolean {
-    return localStorage.getItem('userRole') === 'ADMIN';  // ✅ Check if role is ADMIN
+    return localStorage.getItem('userRole') === 'ADMIN';  
   }
   
 }

@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent {
   username: string = '';
   password: string = '';
-  role: string = 'USER'; // Default Role is set 
+  role: string = 'USER'; 
   errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -21,7 +21,6 @@ export class RegisterComponent {
     this.authService.register(user).subscribe({
       next: (response) => {
         try {
-          // Handle both JSON & plain text responses
           const res = typeof response === 'string' ? { message: response } : response;
   
           if (res.message === 'User registered successfully') {
